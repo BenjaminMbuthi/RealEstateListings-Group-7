@@ -5,11 +5,17 @@ class Agent(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15)
+    
+    def __str__(self):
+        return self.name
 
 class Location(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=10)
+    
+    def __str__(self):
+        return f"{self.city}, {self.state}"
 
 class Property(models.Model):
     title = models.CharField(max_length=255)
@@ -19,11 +25,17 @@ class Property(models.Model):
     agent = models.ForeignKey(Agent, on_delete=models.CASCADE)
     is_available = models.BooleanField(default=True)
     listed_date = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title
 
 class Buyer(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15)
+    
+    def __str__(self):
+        return self.name
 
 class Listing(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
@@ -34,3 +46,6 @@ class Listing(models.Model):
         default='Pending'
     )
     created_date = models.DateField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.property.title} - {self.status}"

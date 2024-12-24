@@ -1,6 +1,11 @@
-from django.urls import path
-from . import views
+from rest_framework.routers import DefaultRouter
+from .views import AgentViewSet, LocationViewSet, PropertyViewSet, BuyerViewSet, ListingViewSet
 
-urlpatterns = [
-    path('properties/', views.property_list, name='property-list'),
-]
+router = DefaultRouter()
+router.register(r'agents', AgentViewSet)
+router.register(r'locations', LocationViewSet)
+router.register(r'properties', PropertyViewSet)
+router.register(r'buyers', BuyerViewSet)
+router.register(r'listings', ListingViewSet)
+
+urlpatterns = router.urls
