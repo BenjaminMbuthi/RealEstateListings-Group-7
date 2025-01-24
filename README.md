@@ -106,8 +106,7 @@ Each model has a corresponding serializer defined in `serializers.py`. These ser
 ### Prerequisites
 - Python 3.11+
 - pip
-- Virtual environment (recommended)
-
+- Virtual environment
 ### Installation
 1. Clone the repository:
    ```bash
